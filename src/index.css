@@ -55,3 +55,7 @@ body {
   box-sizing: border-box;
   font-family: Gilroy;
 }
+
+ul,li{
+  list-style: none;
+}
