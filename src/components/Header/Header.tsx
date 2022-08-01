@@ -1,34 +1,49 @@
-import React, { FC } from 'react'
-import { HeaderBlock, HeaderLink, HeaderText, LeftPart, LinkButton, List, Logo, Navigation, Point, RightPart } from './styles'
+import React, { FC, useState } from "react";
+import { navigation } from "../../constants/navigation";
+import HeaderList from "./HeaderList";
+import {
+    BackgroundLine,
+  BurgerButton,
+  HeaderBlock,
+  HeaderText,
+  LeftPart,
+  Logo,
+  MenuBurger,
+  Navigation,
+  RightPart,
+} from "./styles";
 
 const Header: FC = () => {
+  const [isBurger, setIsBurger] = useState(false);
   return (
-    <HeaderBlock>
-        <LeftPart>
+    <>
+      <div className="container">
+        <HeaderBlock>
+          <LeftPart>
             <Logo>company</Logo>
-            <HeaderText>Your technology partner in the web development</HeaderText>
-        </LeftPart>
-        <RightPart>
+            <HeaderText>
+              Your technology partner in the web development
+            </HeaderText>
+          </LeftPart>
+          <RightPart>
             <Navigation>
-                <List>
-                    <Point>
-                        <HeaderLink>services</HeaderLink>
-                    </Point>
-                    <Point>
-                        <HeaderLink>engagement models</HeaderLink>
-                    </Point>
-                    <Point>
-                        <HeaderLink>case studies</HeaderLink>
-                    </Point>
-                    <Point>
-                        <LinkButton>Contact us</LinkButton>
-                    </Point>
-                </List>
+              <HeaderList list={navigation} />
             </Navigation>
-        </RightPart>
-        {/* <MenuBurger></MenuBurger> */}
-    </HeaderBlock>
-  )
-}
+            <BurgerButton
+              onClick={() => setIsBurger(!isBurger)}
+              isBurger={isBurger}
+            />
+          </RightPart>
+          <BackgroundLine/>
+        </HeaderBlock>
+        {isBurger && (
+          <MenuBurger>
+            <HeaderList list={navigation} />
+          </MenuBurger>
+        )}
+      </div>
+    </>
+  );
+};
 
-export default Header
+export default Header;

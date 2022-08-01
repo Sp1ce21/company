@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../constants/colors";
 
-export const MarqueeContainer = styled.div`
+export const MarqueeContainer = styled.section`
   display: flex;
   flex-direction: column;
   height: 9.38vw;
