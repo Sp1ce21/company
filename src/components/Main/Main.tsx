@@ -12,6 +12,7 @@ import {
   Text,
   Row,
   SquareImage,
+  Item,
 } from "./styles";
 import BackgroundImage from "../../assets/images/main-background.png";
 import Square from "../../assets/images/svgs/square.svg";
@@ -38,19 +39,31 @@ const Main: FC = () => {
             Wordpress / Woocommerce project of any scale. HTML Layout of any
             complexity. Technical SEO optimization. PageSpeed / Core Vitals.
           </Text>
-          <Button>Get a quote</Button>
+          <Button href="#">Get a quote</Button>
         </Left>
         <Right>
           <Rows>
             <Row>
-              <WordpressIcon />
-              <WooCommerseIcon />
-              <HTMLIcon />
+              <Item>
+                <WordpressIcon />
+              </Item>
+              <Item>
+                <WooCommerseIcon />
+              </Item>
+              <Item>
+                <HTMLIcon />
+              </Item>
             </Row>
             <Row>
-              <SeoIcon />
-              <WebSpeedIcon />
-              <FigmaIcon />
+              <Item>
+                <SeoIcon />
+              </Item>
+              <Item>
+                <WebSpeedIcon />
+              </Item>
+              <Item>
+                <FigmaIcon />
+              </Item>
             </Row>
           </Rows>
         </Right>

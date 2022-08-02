@@ -77,7 +77,8 @@ export const Text = styled.div`
     max-width: 60vw;
   }
 `;
-export const Button = styled.div`
+export const Button = styled.a`
+  color: ${colors.white};
   font-weight: 500;
   font-size: 0.89vw;
   background-color: ${colors.red};
@@ -88,6 +89,12 @@ export const Button = styled.div`
   align-items: center;
   border-radius: 1.82vw;
   cursor: pointer;
+  transition: 0.1s;
+
+  &:hover {
+    background-color: ${colors.lightRed};
+    transition: 0.1s;
+  }
 
   @media (max-width: 768px) {
     width: 20.06vw;
@@ -138,14 +145,6 @@ export const Row = styled.div`
   &:last-child {
     padding-bottom: 2.1vw;
     position: relative;
-
-    @media (max-width: 768px) {
-      padding-bottom: 3.5vw;
-    }
-
-    @media (max-width: 425px) {
-      padding-bottom: 5vw;
-    }
   }
 
   &:last-child:after {
@@ -161,19 +160,28 @@ export const Row = styled.div`
     }
   }
 
+  @media (max-width: 768px) {
+    padding-bottom: 3.5vw;
+  }
+
+  @media (max-width: 425px) {
+    padding-bottom: 5vw;
+  }
+`;
+
+export const Item = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 9.9vw;
+  height: 2.8vw;
+
   svg {
+    justify-self: center;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
     max-height: 2.8vw;
-    width: 9.9vw;
-
-    @media (max-width: 768px) {
-      max-height: 8vw;
-      width: 15vw;
-    }
-
-    @media (max-width: 426px) {
-      max-height: 10vw;
-      width: 25vw;
-    }
   }
 `;
 

@@ -6,19 +6,15 @@ export const HeaderBlock = styled.header`
   justify-content: space-between;
   align-self: center;
   color: ${colors.lightBlack};
-  height: 10.5vh;
+  padding: 1.3vw 0 1.1vw;
   position: relative;
 
   @media (max-width: 1024px) {
-    height: 11vh;
+    padding: 1.3vw 0 1.4vw;
   }
 
   @media (max-width: 768px) {
-    height: 12vh;
-  }
-
-  @media (max-width: 425px) {
-    height: 10vh;
+    padding: 1.3vw 0 1.8vw;
   }
 `;
 
@@ -87,6 +83,9 @@ export const HeaderText = styled.div`
 `;
 export const RightPart = styled.div`
   align-self: center;
+  display: flex;
+  align-items: center;
+  column-gap: 3.02vw;
 `;
 export const Navigation = styled.nav`
   @media (max-width: 1024px) {
@@ -99,18 +98,18 @@ export const List = styled.ul`
   align-items: center;
 
   @media (max-width: 1024px) {
-    padding: 9vw 2vw;
+    padding: 9vw 2vw 2vw;
     flex-direction: column;
     align-items: flex-start;
     row-gap: 1vw;
   }
 
   @media (max-width: 768px) {
-    padding: 11vw 2vw;
+    padding: 11vw 2vw 2vw;
   }
 
   @media (max-width: 425px) {
-    padding: 17vw 2vw;
+    padding: 17vw 2vw 2vw;
   }
 `;
 export const Point = styled.li`
@@ -137,7 +136,8 @@ export const HeaderLink = styled.a`
   }
 `;
 
-export const LinkButton = styled.div`
+export const LinkButton = styled.a<{ isHeader?: boolean }>`
+  color: ${colors.lightBlack};
   font-weight: 500;
   font-size: 0.73vw;
   padding: 0.78vw 0 0.57vw;
@@ -148,8 +148,25 @@ export const LinkButton = styled.div`
   border-radius: 1.82vw;
   cursor: pointer;
 
+  background-image: linear-gradient(
+    to left,
+    transparent,
+    transparent 50%,
+    #000 50%,
+    #000
+  );
+  background-position: 100% 0;
+  background-size: 200% 100%;
+  transition: all 0.25s ease-in;
+
+  &:hover {
+    background-position: 0 0;
+    color: #fff;
+  }
+
   @media (max-width: 1024px) {
     width: 14vw;
+    margin-left: 2vw;
   }
 
   @media (max-width: 768px) {
@@ -162,6 +179,14 @@ export const LinkButton = styled.div`
     width: 50vw;
     border-radius: 3vw;
     margin-top: 3vw;
+  }
+
+  @media (max-width: 1024px) {
+    ${({ isHeader }) =>
+      isHeader &&
+      `
+    display: none;
+    `}
   }
 `;
 

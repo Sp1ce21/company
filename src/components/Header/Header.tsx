@@ -1,12 +1,14 @@
-import React, { FC, useState } from "react";
+import React, { FC, useRef, useState } from "react";
 import { navigation } from "../../constants/navigation";
+import { useClickOutside } from "../../utils/use-click-outside";
 import HeaderList from "./HeaderList";
 import {
-    BackgroundLine,
+  BackgroundLine,
   BurgerButton,
   HeaderBlock,
   HeaderText,
   LeftPart,
+  LinkButton,
   Logo,
   MenuBurger,
   Navigation,
@@ -15,6 +17,10 @@ import {
 
 const Header: FC = () => {
   const [isBurger, setIsBurger] = useState(false);
+  const currentRef = useRef<HTMLDivElement>(null);
+  useClickOutside(currentRef, () => {
+    setIsBurger(false);
+  });
   return (
     <>
       <div className="container">
@@ -29,16 +35,23 @@ const Header: FC = () => {
             <Navigation>
               <HeaderList list={navigation} />
             </Navigation>
+            <LinkButton href="#" isHeader={true}>
+              Contact us
+            </LinkButton>
             <BurgerButton
-              onClick={() => setIsBurger(!isBurger)}
+              onClick={(e) => {
+                setIsBurger(!isBurger);
+                e.stopPropagation();
+              }}
               isBurger={isBurger}
             />
           </RightPart>
-          <BackgroundLine/>
+          <BackgroundLine />
         </HeaderBlock>
         {isBurger && (
-          <MenuBurger>
+          <MenuBurger ref={currentRef}>
             <HeaderList list={navigation} />
+            <LinkButton href="#">Contact us</LinkButton>
           </MenuBurger>
         )}
       </div>

@@ -1,1 +1,5 @@
-export const navigation = ["services", "engagement models", "case studies"];
+export const navigation = [
+  { label: "services" },
+  { label: "engagement models" },
+  { label: "case studies" },
+];

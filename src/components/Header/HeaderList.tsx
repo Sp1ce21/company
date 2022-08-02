@@ -1,18 +1,15 @@
 import React, { FC } from "react";
-import { HeaderLink, LinkButton, List, Point } from "./styles";
+import { HeaderLink, List, Point } from "./styles";
 
-const HeaderList: FC<{ list: string[] }> = ({ list }) => {
+const HeaderList: FC<{ list: { label: string }[] }> = ({ list }) => {
   return (
     <List>
       {list.length !== 0 &&
-        list.map((link) => (
-          <Point>
-            <HeaderLink>{link}</HeaderLink>
+        list.map(({ label }) => (
+          <Point key={label}>
+            <HeaderLink href="#">{label}</HeaderLink>
           </Point>
         ))}
-      <Point>
-        <LinkButton>Contact us</LinkButton>
-      </Point>
     </List>
   );
 };
